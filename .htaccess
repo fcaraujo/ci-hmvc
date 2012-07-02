@@ -1,0 +1,22 @@
+#AddDefaultCharset UTF-8
+DirectoryIndex index.php
+Options FollowSymLinks
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+
+    RewriteCond %{HTTP_HOST} ^(domain\.com\.br)(:80)? [NC]
+    RewriteRule ^(.*) http://www.domain.com.br/$1 [R=301,L]
+
+    RewriteCond $1 !^(index.php|robots.txt|favicon.ico|assets)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+    # If we don't have mod_rewrite installed, all 404's
+    # can be sent to index.php, and everything works as normal.
+    # Submitted by: ElliotHaughin
+
+    ErrorDocument 404 /index.php
+</IfModule> 
