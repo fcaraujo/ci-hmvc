@@ -41,6 +41,13 @@
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 
+$route['cms/([a-zA-Z_-]+)/(:any)']	= '$1/cms/$2';
+$route['cms/(index|sair|faz_login)']	= 'cms/$1';
+$route['cms/([a-zA-Z_-]+)']		= '$1/cms/index';
+$route['cms']			        = 'cms/index';
+
+$route['remedio/(:any)'] = 'remedios/ver/$1';
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
