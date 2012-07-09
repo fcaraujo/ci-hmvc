@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Teste extends CI_Controller
+class Teste extends MX_Controller
 {
 
     function index()
